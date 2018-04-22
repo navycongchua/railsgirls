@@ -10,6 +10,8 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    @comments = @idea.comments.all
+    @comment = @idea.comments.build
   end
 
   # GET /ideas/new
@@ -41,7 +43,7 @@ class IdeasController < ApplicationController
   # PATCH/PUT /ideas/1.json
   def update
     respond_to do |format|
-      if @idea.update(idea_params)
+      if @idea.update(params.require(:idea).permit(:name, :description, :picture, :user_id))
         format.html { redirect_to ideas_path, notice: 'Idea was successfully updated.' }
         format.json { render :index, status: :ok, location: @idea }
       else
@@ -69,6 +71,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:name, :description, :picture)
+      params.require(:idea).permit(:name, :description, :picture, :user_id)
     end
 end

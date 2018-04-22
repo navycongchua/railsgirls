@@ -5,9 +5,17 @@ ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
+gem 'devise-bootstrap-views'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-gem 'will_paginate', '~> 3.1.0'
+#gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -18,6 +26,16 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'rb-readline'
+
+gem 'will_paginate', '~> 3.1.0'
+
+gem 'devise'
+
+gem 'gravtastic'
+
+gem 'activeadmin'
+
+gem 'inherited_resources'
 
 gem 'carrierwave'
 # Use CoffeeScript for .coffee assets and views
